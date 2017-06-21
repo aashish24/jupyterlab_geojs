@@ -88,20 +88,40 @@ export class GeoJSDocWidget extends Widget {
    * Render data to DOM node
    */
   _render() {
+
+    console.log(this.node);
+
     const content = this._context.model.toString();
-    try {
+    // try {
       const props = {
         data: JSON.parse(content),
         theme: 'cm-s-jupyter'
       };
-      ReactDOM.render(<GEOJSComponent {...props} />, this.node);
-    } catch (error) {
-      ReactDOM.render(
-        <ErrorDisplay message="Invalid GEOJSON" content={content} />,
-        this.node
-      );
-    }
+       var map = geo.map({
+      node: this.node,
+      center: {
+        x: -125,
+        y: 36.5
+      },
+        zoom: 4
+      });
+
+    map.createLayer(
+      'osm',
+      {
+        url: 'http://tile.stamen.com/toner-lite/{z}/{x}/{y}.png',
+        attribution: ['Map tiles by <a href="http://stamen.com">Stamen Design</a>,',
+          'under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>.',
+          'Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under',
+          '<a href="http://www.openstreetmap.org/copyright">ODbL</a>.'
+        ].join(' ')
+      }
+    );
+
+    map.draw();
+    // }
   }
+
 
   /**
    * A message handler invoked on a `'path-changed'` message

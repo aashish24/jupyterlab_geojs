@@ -1,6 +1,6 @@
 # jupyterlab_cjson
 
-A JupyterLab and Jupyter Notebook extension for rendering CJSON
+A JupyterLab and Jupyter Notebook extension for rendering GEOJSON
 
 ## Prerequisites
 
@@ -9,7 +9,7 @@ A JupyterLab and Jupyter Notebook extension for rendering CJSON
 ## Install
 
 ```bash
-jupyter labextension install jupyterlab_cjson
+jupyter labextension install jupyterlab_geojs
 ```
 
 ## Development
