@@ -1,15 +1,15 @@
 import { Widget } from '@phosphor/widgets';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FreeEnergyComponent from '../../components/energy';
+import GEOJSComponent from '../../components/geojs';
 
-const MIME_TYPE = 'application/cjson-free_energy';
-const CLASS_NAME = 'jp-OutputWidgetFreeEnergy';
+const MIME_TYPE = 'application/geojson';
+const CLASS_NAME = 'jp-OutputWidgetGeoJS';
 
 /**
- * A Phosphor widget for rendering free eneryg data
+ * A Phosphor widget for rendering CJSON
  */
-export class FreeEnergyOutputWidget extends Widget {
+export class GeoJSOutputWidget extends Widget {
   constructor(options) {
     super();
     this._mimeType = options.mimeType;
@@ -66,11 +66,11 @@ export class FreeEnergyOutputWidget extends Widget {
       height: this.node.offsetHeight
     };
 
-    ReactDOM.render(<FreeEnergyComponent {...props} />, this.node);
+    ReactDOM.render(<GEOJSComponent {...props} />, this.node);
   }
 }
 
-export class FreeEnergyOutputRenderer {
+export class GeoJSOutputRenderer {
   /**
    * The mime types that this OutputRenderer accepts
    */
@@ -87,6 +87,6 @@ export class FreeEnergyOutputRenderer {
    * Render the transformed mime bundle
    */
   render(options) {
-    return new FreeEnergyOutputWidget(options);
+    return new GeoJSOutputWidget(options);
   }
 }

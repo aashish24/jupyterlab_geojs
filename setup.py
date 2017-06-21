@@ -1,24 +1,24 @@
 from setuptools import setup
 from setupbase import create_cmdclass, install_npm
 
-cmdclass = create_cmdclass(['labextension', 'nbextension'])
+cmdclass = create_cmdclass(['labextension'])
 cmdclass['labextension'] = install_npm('labextension')
-cmdclass['nbextension'] = install_npm('nbextension')
+# cmdclass['nbextension'] = install_npm('nbextension')
 
 setup_args = dict(
-    name                 = 'jupyterlab_cjson',
+    name                 = 'jupyterlab_geojs',
     version              = '0.20.2',
-    packages             = ['jupyterlab_cjson'],
+    packages             = ['jupyterlab_geojs'],
     author               = 'Chris Harris',
     author_email         = 'chris.harris@kitware.com',
     url                  = 'http://jupyter.org',
     license              = 'BSD',
     platforms            = "Linux, Mac OS X, Windows",
     keywords             = [
-        'ipython', 
-        'jupyter', 
-        'jupyterlab', 
-        'extension', 
+        'ipython',
+        'jupyter',
+        'jupyterlab',
+        'extension',
         'renderer'
     ],
     classifiers          = [

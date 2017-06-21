@@ -4,15 +4,15 @@ import { ActivityMonitor } from '@jupyterlab/coreutils';
 import { runMode } from '@jupyterlab/codemirror';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CJSONComponent from '../../components/cjson';
+import GEOJSComponent from '../../components/geojs';
 
-const CLASS_NAME = 'jp-DocWidgetCJSON';
+const CLASS_NAME = 'jp-DocWidgetGEOJS';
 const RENDER_TIMEOUT = 1000;
 
 /**
  * A widget for rendering cjson files
  */
-export class CjsonDocWidget extends Widget {
+export class GeoJSDocWidget extends Widget {
   constructor(context) {
     super();
     this._context = context;
@@ -94,10 +94,10 @@ export class CjsonDocWidget extends Widget {
         data: JSON.parse(content),
         theme: 'cm-s-jupyter'
       };
-      ReactDOM.render(<CJSONComponent {...props} />, this.node);
+      ReactDOM.render(<GEOJSComponent {...props} />, this.node);
     } catch (error) {
       ReactDOM.render(
-        <ErrorDisplay message="Invalid CJSON" content={content} />,
+        <ErrorDisplay message="Invalid GEOJSON" content={content} />,
         this.node
       );
     }
@@ -114,11 +114,11 @@ export class CjsonDocWidget extends Widget {
 /**
  * A widget factory for DocWidget
  */
-export class CjsonDocWidgetFactory extends ABCWidgetFactory {
+export class GeoJSDocWidgetFactory extends ABCWidgetFactory {
   /**
     * Create a new widget instance
     */
   createNewWidget(context) {
-    return new CjsonDocWidget(context);
+    return new GeoJSDocWidget(context);
   }
 }
